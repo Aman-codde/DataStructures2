@@ -18,16 +18,14 @@ class HashTable1 {
   }
 
   get(key) {
-    for (let index in this.data) {
-      if (this.data[index][0] === key) {
-        return this.data[index][1];
-      }
-    }
-    return "Key not found";
+    let address = this._hash(key);
+    //console.log("address", address, " is ", this.data[address]);
+    if (this.data[address] === undefined) return null;
+    return this.data[address][1];
   }
 }
 
 const h1 = new HashTable1(50);
 console.log(h1.set("grapes", 10000));
-console.log(h1.get("grapes"));
+console.log("get ", h1.get("grape"));
 console.log(h1.set("apples", 5000));
